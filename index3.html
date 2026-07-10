@@ -5,12 +5,14 @@
     function omikuzi() {
         let results =["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
         let random_number = Math.floor(Math.random() * results.length);
-        alert(results[random_number]);
+        document.getElementById("result").innerHTML = results[random_number];
     }
 </script>
 </html>
 <body>
     <h1>おみくじ</h1>
+    <p id="result">ここにおみくじの結果が表示されます</p>
     <button onclick="omikuzi()">おみくじを引く</button>
+
 </body>
 
