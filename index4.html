@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<body id="bg">
+    <h1>背景色チェンジャー</h1>
+    <button onclick="change_color()">画面の背景色を変える</button>
+
+    <script>
+        function change_color() {
+            let colors = ["red", "blue", "green", "yellow"];
+            let random_number = Math.floor(Math.random() * colors.length);
+
+            document.getElementById("bg").style.backgroundColor = colors[random_number];
+        }
+    </script>
+
+    
+</body>
+</html>
