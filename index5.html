@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+    <meta charset="UTF-8">
+    <title>おみくじ</title>
+    </head>
+    <body>
+         <h1>おみくじ</h1>
+    <p id="result">ここにおみくじの結果が表示されます</p>
+    <button id="btn">おみくじを引く</button>
+<script>
+    let my_button = document.getElementById("btn");
+    my_button.addEventListener("click", omikuzi);
+    
+    function omikuzi() {
+        let results = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
+        let random_number = Math.floor(Math.random() * results.length);
+        let result_box = document.getElementById("result");
+        result_box.textContent = results[random_number];
+    
+        result_box.style.fontWeight = "normal";
+
+    if (results[random_number] === "大吉") {
+        result_box.style.color = "red";
+        result_box.style.fontWeight = "bold";
+
+     } else if (results[random_number] === "中吉" || results[random_number] === "小吉") {
+        result_box.style.color = "blue";
+        result_box.style.fontWeight = "bold";
+
+    } else if (results[random_number] === "凶") {
+        result_box.style.color = "gray";
+
+    } else {
+        result_box.style.color = "black";
+    }
+   }
+</script>
+</body>
+</html>
