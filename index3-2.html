@@ -13,7 +13,7 @@
         let results = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
         let random_number = Math.floor(Math.random() * results.length);
 
-        console.log("選ばれたランダムな数:", random_number);
+        console.log(`[デバッグ] 乱数:${random_number} | 結果:${results[random_number]}`);
 
         let result_box = document.getElementById("result");
         result_box.textContent = results[random_number];
