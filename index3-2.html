@@ -3,12 +3,36 @@
     <head>
         <meta charset="UTF-8">
     <title>おみくじ</title>
+
+
+        <style>
+            .daikitistyle {
+                color: red;
+                font-weight: bold;
+                font-size: 24px;
+            }
+            .kyostyle {
+                color: blue;
+                font-style: italic;
+            }
+        </style>
+
+
     </head>
+
+
+
+
     <body>
          <h1>おみくじ</h1>
     <p id="result">ここにおみくじの結果が表示されます</p>
-    <button onclick="omikuzi()">おみくじを引く</button>
+    <button id="btn">おみくじを引く</button>
+
+
 <script>
+    let my_button = document.getElementById("btn");
+    my_button.addEventListener("click", omikuzi);
+
     function omikuzi() {
         let results = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
         let random_number = Math.floor(Math.random() * results.length);
@@ -18,18 +42,14 @@
         let result_box = document.getElementById("result");
         result_box.textContent = results[random_number];
     
-        result_box.style.fontWeight = "normal";
+       result_box.classList.remove("daikitistyle");
+       result_box.classList.remove("kyostyle");
 
-    if (results[random_number] === "大吉") {
-        result_box.style.color = "red";
-        result_box.style.fontWeight = "bold";
-
-    } else if (results[random_number] === "凶") {
-        result_box.style.color = "gray";
-
-    } else {
-        result_box.style.color = "black";
-    }
+       if (results[random_number] === "大吉") {
+            result_box.classList.add("daikitistyle");
+       } else if (results[random_number] === "凶") {
+            result_box.classList.add("kyostyle");
+       }
    }
 </script>
 </body>
