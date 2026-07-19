@@ -2,9 +2,7 @@
 <html lang="ja">
     <head>
         <meta charset="UTF-8">
-    <title>おみくじ</title>
-
-
+    <title>名前入りおみくじ</title>
         <style>
             .daikitistyle {
                 color: red;
@@ -16,17 +14,16 @@
                 font-style: italic;
             }
         </style>
-
-
     </head>
 
 
-
-
     <body>
-         <h1>おみくじ</h1>
-    <p id="result">ここにおみくじの結果が表示されます</p>
-    <button id="btn">おみくじを引く</button>
+         <h1>名前入りおみくじ</h1>
+    <p>名前を入力してください:<input id="user-name" type="text" placeholder="例:たろう"></p>
+
+    <button id="btn">占う</button>
+    <p id="result">ここに結果が出ます</p>
+    
 
 
 <script>
@@ -34,13 +31,20 @@
     my_button.addEventListener("click", omikuzi);
 
     function omikuzi() {
+       let name_input =document.getElementById("user-name");
+       let user_name = name_input.value;
+
+        if (user_name === "") {
+            user_name = "ゲスト";
+        }
+
         let results = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
         let random_number = Math.floor(Math.random() * results.length);
 
-        console.log(`[デバッグ] 乱数:${random_number} | 結果:${results[random_number]}`);
-
         let result_box = document.getElementById("result");
-        result_box.textContent = results[random_number];
+                result_box.textContent = `${user_name}さんの今日の運勢は... 【${results[random_number]}】 です！`;
+
+        console.log(`[デバッグ] プレイヤー名:${user_name} | 結果:${results[random_number]}`);
     
        result_box.classList.remove("daikitistyle");
        result_box.classList.remove("kyostyle");
