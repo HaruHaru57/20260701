@@ -30,6 +30,13 @@
     let my_button = document.getElementById("btn");
     my_button.addEventListener("click", omikuzi);
 
+    let name_input = document.getElementById("user-name");
+    name_input.addEventListener("keydown", function(e) {
+        if (e.key === "Enter") {
+            omikuzi();
+        }
+    });
+
     function omikuzi() {
        let name_input =document.getElementById("user-name");
        let user_name = name_input.value;
