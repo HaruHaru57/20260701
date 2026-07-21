@@ -53,14 +53,16 @@
 
         console.log(`[デバッグ] プレイヤー名:${user_name} | 結果:${results[random_number]}`);
     
-       result_box.classList.remove("daikitistyle");
-       result_box.classList.remove("kyostyle");
+       result_box.classList.remove("kyostyle", "daikitistyle");
 
        if (results[random_number] === "大吉") {
             result_box.classList.add("daikitistyle");
        } else if (results[random_number] === "凶") {
             result_box.classList.add("kyostyle");
        }
+
+       name_input.value = " ";
+       name_input.focus();
    }
 </script>
 </body>
