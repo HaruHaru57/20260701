@@ -26,6 +26,7 @@
         <li>&lt;ul&gt;  黒丸の箇条書き</li>
         <li>&lt;ol&gt;  数字の箇条書き</li>
         <li>&lt;li&gt;  箇条書きの中身</li>
+        <li>&lt;hr&gt;  横線</li>
     </ul>
     <ul>
         <li>&lt;button onclick="alert('〇〇')"&gt;ボタン&lt;/button&gt;　　ボタンを押すとアラートが出る onclick内がボタンを押したときの処理</li>
@@ -132,9 +133,21 @@
         </li>
     </ul>
 
-    <li>入力欄の要素.value = "" / 要素/.focus()</li>
+    <li>入力欄の要素.value = "" / 要素.focus()</li>
     <ul>
         <li><code>value = ""</code>で入力フォームの文字を空っぽにリセットできる。</li>
         <li><code>focus()</code>で入力欄にカーソルを自動で合体させ、ユーザーがすぐに文字を打ち込める状態にする</li>
+    </ul>
+
+    <ul>
+        <li>配列名.push("追加したいデータ")
+        <br>➔ 配列の一番最後に新しいデータを追加するコマンド
+        </li>
+        <li>配列名.length
+        <br>➔ 配列の中に今いくつデータが入っているか（要素数）を数えて数字で返してくれる道具
+        </li>
+        <li>A !== B
+        <br>➔ 「AとBが等しくない」という意味。<code>if (input_text !== "")</code> と書くことで、何も入力されていない空押しバグを防ぐことができる。
+        </li>
     </ul>
 </body>

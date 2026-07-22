@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>配列追加おみくじ</title>
+    </head>
+
+    <body>
+        <h1>運勢カスタマイズおみくじ</h1>
+
+        <p>
+            新しい運勢を追加:
+            <input id="new-item" type="text" placeholder="例:超大吉">
+            <button id="add-btn">追加する</button>
+        </p>
+
+        <hr>
+
+        <button id="btn">おみくじを引く</button>
+        <p id="result">ここに結果が出ます</p>
+        <p id="list-count">現在の運勢の種類: 6種類</p>
+        
+        <script>
+            let results = ["大吉", "中吉", "小吉", "吉", "末吉", "凶"];
+
+            let add_button = document.getElementById("add-btn");
+            add_button.addEventListener("click", function() {
+                let new_item_input = document.getElementById("new-item");
+                let new_text = new_item_input.value;
+
+                if (new_text !== "") {
+                    results.push(new_text);
+
+                    let count_box = document.getElementById("list-count");
+                    count_box.textContent = `現在の運勢の種類: ${results.length}種類`;
+
+                    new_item_input.value = "";
+                    new_item_input.focus();
+
+                    console.log(`[デバッグ]　配列を追加しました:${new_text} | 現在の中身:` , results);
+                }
+            });
+
+            let my_button = document.getElementById("btn");
+            my_button.addEventListener("click", omikuzi);
+
+            function omikuzi() {
+                let random_number = Math.floor(Math.random() * results.length);
+
+                let result_box = document.getElementById("result");
+                result_box.textContent = `今日の運勢は... 【${results[random_number]}】です!`;
+            }
+           
+        </script>
+    </body>
+</html>

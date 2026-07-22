@@ -6,8 +6,21 @@
     </head>
     <body>
          <h1>おみくじ</h1>
-    <p id="result">ここにおみくじの結果が表示されます</p>
+
+
+    
+    <p>
+        新しい運勢を追加:
+        <input id="new-item" type="text" placeholder="例: 超大吉">
+        <button is="add-btn">追加する</button>
+    </p>
+
+    <hr>
+
     <button id="btn">おみくじを引く</button>
+    <p id="result">ここにおみくじの結果が表示されます</p>
+    <p id="list-count">現在の運勢の種類 : 6種類</p>
+    
 <script>
     let my_button = document.getElementById("btn");
     my_button.addEventListener("click", omikuzi);
