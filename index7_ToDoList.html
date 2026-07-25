@@ -16,9 +16,16 @@
             li {
                 margin-bottom: 8px;
                 font-size: 18px;
+                cursor: pointer;
+            }
+
+            li:hover {
+                color: #888;
+                text-decoration: line-through;
             }
         </style>
     </head>
+
     <body>
         <h1>やることリスト(ToDo)</h1>
 
@@ -56,6 +63,11 @@
             let new_li = document.createElement("li");
 
             new_li.textContent = task_text;
+
+            new_li.addEventListener("click", function(){
+                new_li.remove();
+            });
+            
 
             todo_list.appendChild(new_li);
 
