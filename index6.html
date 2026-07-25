@@ -14,6 +14,10 @@
             <button id="add-btn">追加する</button>
         </p>
 
+        <p>
+            <button id="del-btn">一番最後の運勢を削除する</button>
+        </p>
+
         <hr>
 
         <button id="btn">おみくじを引く</button>
@@ -36,17 +40,36 @@
 
                     new_item_input.value = "";
                     new_item_input.focus();
-
-                    console.log(`[デバッグ]　配列を追加しました:${new_text} | 現在の中身:` , results);
                 }
-            });
+                            });
+
+            let del_button = document.getElementById("del-btn");
+            del_button.addEventListener("click", function() {
+                if (results.length > 0) {
+                    let last_index = results.length - 1;
+
+                    results.splice(last_index, 1);
+
+                    let count_box = document.getElementById("list-count");
+                    count_box.textContent = `現在の運勢の種類 : ${results.length}種類`;
+                    
+                    console.log("[デバッグ]　一番最後の運勢を削除しました。現在の中身:" , results);
+                }
+            })                
+                    
+                
 
             let my_button = document.getElementById("btn");
             my_button.addEventListener("click", omikuzi);
 
             function omikuzi() {
-                let random_number = Math.floor(Math.random() * results.length);
+                if (results.length === 0) {
+                    let result_box = document.getElementById("result");
+                    result_box.textContent = "運勢が空っぽです！追加してください。";
+                    return;
+                }
 
+                let random_number = Math.floor(Math.random() * results.length);
                 let result_box = document.getElementById("result");
                 result_box.textContent = `今日の運勢は... 【${results[random_number]}】です!`;
             }
