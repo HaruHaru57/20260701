@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF=8">
+        <title>ToDoリストアプリ</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                padding: 20px;
+            }
+
+            ul {
+                padding-left: 20px;
+            }
+
+            li {
+                margin-bottom: 8px;
+                font-size: 18px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>やることリスト(ToDo)</h1>
+
+        <p>
+            <input id="todo-input" type="text" placeholder="やることを入力 (例 : 部屋の掃除)">
+            <button id="add-btn">タスクを追加</button>
+        </p>
+
+        <hr>
+
+
+        <ul id="todo-list"></ul>
+
+    
+    <script>
+        let add_button = document.getElementById("add-btn");
+        let todo_input = document.getElementById("todo-input");
+        let todo_list = document.getElementById("todo-list");
+
+        add_button.addEventListener("click", addTodo);
+
+        todo_input.addEventListener("keydown", function(e) {
+            if (e.key === "Enter") {
+                addTodo();
+            }
+        });
+
+        function addTodo() {
+            let task_text = todo_input.value;
+
+            if (task_text === "") {
+                return;
+            }
+
+            let new_li = document.createElement("li");
+
+            new_li.textContent = task_text;
+
+            todo_list.appendChild(new_li);
+
+            todo_input.value = "";
+            todo_input.focus();
+        }
+    </script>
+    </body>
+</html>
