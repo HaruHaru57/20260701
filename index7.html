@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UFT=8">
+        <title>DAY 25 - Flexboxの基本</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                padding: 20pa;
+            }
+
+            .card-container {
+                display: flex;
+                gap: 20px;
+            }
+
+            .card {
+                background-color: #f0f4f8;
+                border: 2px solid #3b82f6;
+                border-radius: 8px;
+                padding: 15px;
+                width: 200px;
+            }
+
+            .card h3 {
+                margin-top: 0;
+                color: #1e3a8a;
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>サービスの特徴(Flexboxで横並び)</h1>
+
+        <div class="card-container">
+
+            <div class="card">
+                <h3>特徴1:速い</h3>
+                <p>処理スピードが圧倒的に速く、ストレスなく操作できます。</p>
+            </div>
+
+            <div class="card">
+                <h3>特徴2:簡単</h3>
+                <p>直観的なUIで、誰でも迷わずすぐに使いこなせます。</p>
+            </div>
+
+            <div class="card">
+                <h3>特徴3:安全</h3>
+                <p>強固なセキュリティで、大切なデータをしっかり守ります。</p>
+            </div>
+        
+        </div>
+
+    </body>
+</html>
