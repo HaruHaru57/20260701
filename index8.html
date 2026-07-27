@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lamg="ja">
+    <meta charset="UTF=8">
+    <head>
+        <title>Day 26 - Flexboxの位置揃え</title>
+        <style>
+            body {
+                margin: 0;
+                font-family: sans-serif;
+            }
+
+            header {
+                background-color: #1e293b;
+                color: white;
+                padding: 15px 30px;
+
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .log {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .nav-menu {
+                display: flex;
+                gap: 20px;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .nav-menu a {
+                color: white;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>
+
+            <div class="logo">MyProjectfolio</div>
+
+            <ul class="nav-menu">
+                <li><a href="#">ホーム</a></li>
+                <li><a href="#">作品集</a></li>
+                <li><a href="#">お問い合わせ</a></li>
+            </ul>
+        </header>
+    </body>
+</html>
