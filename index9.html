@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html meta="ja">
+<head>
+    <meta charset="UTF=8">
+    <title>Day 27 - 縦方向の位置揃え</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #e2e8f0;
+            height: 200px;
+
+            display: flex;
+            align-items: center;
+            justify-items: space-around;
+        }
+
+        .box1 {
+            background-color: #ef4444;
+            color: white;
+            padding: 20px;
+            height: 50px;
+        }
+
+        .box2 {
+            background-color: #3b82f6;
+            color: white;
+            padding: 20px;
+            height: 100px;
+        }
+        
+        .box3 {
+            background-color: #10b981;
+            color: white;
+            padding: 20px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>align-items: center の実験</h1>
+
+    <div class="container">
+        <div class="box1">箱1 (高さ50)</div>
+        <div class="box2">箱2(高さ100)</div>
+        <div class="box3">箱3(高さ40)</div>
+    </div>
+</body>
+</html>
