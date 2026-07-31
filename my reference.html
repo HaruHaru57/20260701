@@ -73,27 +73,31 @@
     <br>➔ 親要素に指定することで、直下の子要素（<code>div</code> など）を簡単に横並びにするCSSプロパティ。
     </li>
     <li>gap: ◯px;
-    <br>➔ Flexboxで並んだ子要素同士の間隔（すき間）を一括で設定するプロパティ。
+        <br>➔ Flexboxで並んだ子要素同士の間隔（すき間）を一括で設定するプロパティ。
     </li>
     </ul>
     
     <li>justify-content: ◯◯;
-    <br>➔ Flexboxで横並びにした要素の「横方向の位置」を揃えるプロパティ。
-    <br>（<code>center</code>: 中央揃え / <code>space-between</code>: 両端均等配置 / <code>flex-end</code>: 右寄せ）
+        <br>➔ Flexboxで横並びにした要素の「横方向の位置」を揃えるプロパティ。
+        <br>（<code>center</code>: 中央揃え / <code>space-between</code>: 両端均等配置 / <code>flex-end</code>: 右寄せ）
     </li>
 
     <li>align-items: ◯◯;
-    <br>➔ Flexboxで横並びにした要素の「縦方向（上下）の位置」を揃えるプロパティ。
-    <br>（<code>center</code>: 上下中央揃え / <code>flex-start</code>: 上揃え / <code>flex-end</code>: 下揃え）
+        <br>➔ Flexboxで横並びにした要素の「縦方向（上下）の位置」を揃えるプロパティ。
+        <br>（<code>center</code>: 上下中央揃え / <code>flex-start</code>: 上揃え / <code>flex-end</code>: 下揃え）
     </li>
 
     <li>完全中央配置（縦横中央）
-    <br>➔ 親要素に <code>display: flex;</code> / <code>justify-content: center;</code> / <code>align-items: center;</code> の3つを組み合わせることで、子要素を完全に中央（ど真ん中）に配置できるテクニック。
+        <br>➔ 親要素に <code>display: flex;</code> / <code>justify-content: center;</code> / <code>align-items: center;</code> の3つを組み合わせることで、子要素を完全に中央（ど真ん中）に配置できるテクニック。
     </li>
 
     <li>flex-wrap: ◯◯;
-    <br>➔ Flexboxで要素が親の幅に入りきらなくなったときの「折り返し」を設定するプロパティ。
-    <br>（<code>wrap</code>: 自動で次の行へ折り返す / <code>nowrap</code>: 折り返さずに潰して1行に収める）
+        <br>➔ Flexboxで要素が親の幅に入りきらなくなったときの「折り返し」を設定するプロパティ。
+        <br>（<code>wrap</code>: 自動で次の行へ折り返す / <code>nowrap</code>: 折り返さずに潰して1行に収める）
+    </li>
+
+    <li>CSS Grid（マス目レイアウト）
+        <br>➔ <code>display: grid;</code> と <code>grid-template-columns: repeat(列数, 1fr);</code> を使うことで、縦横きれいな格子状（表のようなレイアウト）を一瞬で作れるプロパティ。
     </li>
 
 
