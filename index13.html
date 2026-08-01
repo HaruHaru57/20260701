@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 31 - レスポンシブWebデザイン</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                padding: 20px;
+                background-color: #f8fafc;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            .card-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+
+            .card {
+                background-color: #3b82f6;
+                color: white;
+                padding: 30px;
+                border-radius: 8px;
+                text-align: center;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            @media (max-width: 768px) {
+                .card-container {
+                    grid-template-columns: 1fr;
+                }
+
+                .card {
+                    background-color: #ef4444;
+                }
+            }
+        </style>
+    </head>
+    <body>
+
+        <h1>画面サイズを変えてみてね!</h1>
+
+        <div class="card-container">
+            <div class="card">カード 1</div>
+            <div class="card">カード 2</div>
+            <div class="card">カード 3</div>
+        </div>
+
+    </body>
+</html>
