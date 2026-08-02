@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 32 - 実践カードコンポーネント</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            background-color: #f1f5f9;
+            padding: 40px 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0f172a;
+            margin-bottom: 30px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-image {
+            height: 160px;
+            background-color: #3b82f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-title {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            color: #1e293b;
+        }
+
+        .card-text {
+            margin: 0 0 20px 0;
+            color: #64748b;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #0f172a;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>おすすめの学習コース</h1>
+
+        <div class="card-grid">
+            
+            <div class="card">
+                <div class="card-image">HTML / CSS 基礎</div>
+                <div class="card-body">
+                    <h2 class="card-title">Web制作の第一歩</h2>
+                    <p class="card-text">Webページの骨組みを作るHTMLと、見た目をきれいに整えるCSSを基礎からしっかり学びます。</p>
+                    <a href="#" class="btn">詳細を見る</a>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image" style="background-color: #10b981;">JavaScriptの基礎を習得します。</div>
+                <div class="card-body">
+                    <h2 class="card-title">動的なWeb表現</h2>
+                    <p class="card-text">ボタンを押したら動きが出る仕組みや、複雑な処理を実現するJavaScriptの基礎を習得します。</p>
+                    <a href="#" class="btn">詳細を見る</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
