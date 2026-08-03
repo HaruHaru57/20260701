@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Day 33 - 入力フォームのデザイン</title>
+        <style>
+            body {
+                font-family: sans-serif;
+                background-color: #f8fafc;
+                padding: 40px 20px;
+            }
+
+            .form-container {
+                max-width: 500px;
+                margin: 0 auto;
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+                font-size: 14px;
+                margin-bottom: 8px;
+                color: #1e293b;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+                box-sizing: border-box;
+                font-size: 14px;
+                outline: none;
+                transition: border-color 0.2s;
+            }
+
+            input:focus,
+            textarea:focus {
+                border-color: #3b82f6;
+            }
+
+            .submit-btn {
+                width: 100%;
+                background-color: #3b82f6;
+                color: white;
+                padding: 12px;
+                border: none;
+                border-radius: 6px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+
+            .submit-btn:hover {
+                background-color: #2563eb;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <div class="form-container">
+            <h2>お問い合わせ</h2>
+
+            <div class="form-group">
+                <label for="name">お名前</label>
+                <input type="text" id="name" placeholder="山田太郎">
+            </div>
+
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="email" id="email" placeholder="example@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="message">お問い合わせ内容</label>
+                <textarea id="message" rows="4" placeholder="ご意見・ご感想をご記入ください"></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">送信する</button>
+        </div>
+    </body>
+</html>

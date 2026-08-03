@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+        <title>Day 34 - CSS総合まとめ</title>
+        <style>
+
+            body {
+                margin: 0;
+                font-family: sans-serif;
+                background-color: #f1f5f9;
+                color: #0f172a;
+            }
+
+            header {
+                background-color: #0f172a;
+                color: white;
+                padding: 15px 30px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .logo {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .hero {
+                background-color: #1e293b;
+                color: white;
+                height: 250px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+                margin-bottom: 10px;
+            }
+
+            .hero p {
+                color: #94a3b8;
+                margin: 0;
+            }
+
+            .main-content {
+                max-width: 600px;
+                margin: -40px auto 60px;
+                padding: 0 20px;
+            }
+
+            .form-card {
+                background-color: white;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            label {
+                display: block;
+                font-weight: bold;
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #cbd5e1;
+                border-radius: 6px;
+                box-sizing: border-box;
+                font-size: 14px;
+                outline: none;
+            }
+
+            input:focus, textarea:focus {
+                border-color: #3b82f6;
+            }
+
+            .submit-btn {
+                width: 100%;
+                background-color: #3b82f6;
+                color: white;
+                padding: 14px;
+                border: none;
+                border-radius: 6px;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: background-color 0.2s;
+            }
+
+            .submit-btn:hover {
+                background-color: #2563eb;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                background-color: #0f172a;
+                color: #64748b;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <div class="logo">MyBrand</div>
+        </header>
+        
+            <div class="hero">
+                <div>
+                    <h1>Contact Us</h1>
+                    <p>ご質問・ご相談はお気軽にお問合せください。</p>
+                </div>
+            </div>
+
+            <div class="main-content">
+                <div class="form-card">
+                    <div class="form-group">
+                        <label>お名前</label>
+                        <input type="text" placeholder="例 : 山田太郎">
+                    </div>
+                    <div class="form-group">
+                        <label>メールアドレス</label>
+                        <input type="email" placeholder="example@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>メッセージ</label>
+                        <textarea rows="4" placeholder="お問い合わせ内容をご記入ください"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">送信する</button>
+                </div>
+            </div>
+
+            <footer>
+                &copy; 2026 MyBrand All Rights Reserved.
+            </footer>
+
+    </body>
+</html>
