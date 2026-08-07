@@ -90,17 +90,32 @@
 // characters[0].skills.push("民間魔法");
 // console.log("Q5の答え (スキルが追加された配列):", characters[0].skills);
 
-38
+// 38
 
-const playerLevel = 50;
-const hasKey = true;
+// const playerLevel = 50;
+// const hasKey = true;
 
-console.log("--- ダンジョンの扉の判定 ---");
+// console.log("--- ダンジョンの扉の判定 ---");
 
-if (playerLevel >= 50 && haskKey === true) {
-    console.log("ボス部屋の扉が開いた!");
-} else if (playerLevel >= 50 && hasKey === false) {
-    console.log("レベルは足りているが、鍵がない...");
-} else {
-    console.log("レベルが足りない!修行し直そう。");
+// if (playerLevel >= 50 && haskKey === true) {
+//     console.log("ボス部屋の扉が開いた!");
+// } else if (playerLevel >= 50 && hasKey === false) {
+//     console.log("レベルは足りているが、鍵がない...");
+// } else {
+//     console.log("レベルが足りない!修行し直そう。");
+// }
+
+
+39
+
+const users = [
+    {name: "たろう", level: 50},
+    {name: "じろう", level: 30},
+    {name: "はなこ", level: 85}
+];
+
+console.log("--- ユーザー一覧を表示 ---");
+
+for (const user of users) {
+    console.log(`${user.name}さんのレベルは　${user.level} です`);
 }
