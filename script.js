@@ -106,16 +106,41 @@
 // }
 
 
-39
+// 39
 
-const users = [
-    {name: "たろう", level: 50},
-    {name: "じろう", level: 30},
-    {name: "はなこ", level: 85}
-];
+// const users = [
+//     {name: "たろう", level: 50},
+//     {name: "じろう", level: 30},
+//     {name: "はなこ", level: 85}
+// ];
 
-console.log("--- ユーザー一覧を表示 ---");
+// console.log("--- ユーザー一覧を表示 ---");
 
-for (const user of users) {
-    console.log(`${user.name}さんのレベルは　${user.level} です`);
+// for (const user of users) {
+//     console.log(`${user.name}さんのレベルは　${user.level} です`);
+// }
+
+40
+
+function calcTax(price) {
+    const tax = price * 0.1;
+    return price + tax;
 }
+
+const item1 = calcTax(1000);
+const item2 = calcTax(2500);
+
+console.log(`1000円の商品の税込み価格: ${item1}円`);
+console.log(`2500円の商品の税込み価格: ${item2}円`);
+
+
+function showStatus(name, level) {
+    if (level >= 50) {
+        console.log(`${name} (Lv.${level}) : ベテランプレイヤーです`);
+    } else {
+        console.log(`${name} (Lv.${level}) : ビギナープレイヤーです`)
+    }
+}
+
+showStatus("たろう", 50);
+showStatus("じろう", 20);
