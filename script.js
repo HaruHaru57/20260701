@@ -120,27 +120,43 @@
 //     console.log(`${user.name}さんのレベルは　${user.level} です`);
 // }
 
-40
+// 40
 
-function calcTax(price) {
-    const tax = price * 0.1;
-    return price + tax;
-}
+// function calcTax(price) {
+//     const tax = price * 0.1;
+//     return price + tax;
+// }
 
-const item1 = calcTax(1000);
-const item2 = calcTax(2500);
+// const item1 = calcTax(1000);
+// const item2 = calcTax(2500);
 
-console.log(`1000円の商品の税込み価格: ${item1}円`);
-console.log(`2500円の商品の税込み価格: ${item2}円`);
+// console.log(`1000円の商品の税込み価格: ${item1}円`);
+// console.log(`2500円の商品の税込み価格: ${item2}円`);
 
 
-function showStatus(name, level) {
-    if (level >= 50) {
-        console.log(`${name} (Lv.${level}) : ベテランプレイヤーです`);
-    } else {
-        console.log(`${name} (Lv.${level}) : ビギナープレイヤーです`)
-    }
-}
+// function showStatus(name, level) {
+//     if (level >= 50) {
+//         console.log(`${name} (Lv.${level}) : ベテランプレイヤーです`);
+//     } else {
+//         console.log(`${name} (Lv.${level}) : ビギナープレイヤーです`)
+//     }
+// }
 
-showStatus("たろう", 50);
-showStatus("じろう", 20);
+// showStatus("たろう", 50);
+// showStatus("じろう", 20);
+
+41
+
+const titleElement = document.querySelector("#title");
+const textElement = document.querySelector("#text");
+
+titleElement.textContent = "JavaScriptでタイトルを書き換えました!";
+
+textElement.computedStyleMap.color = "red";
+textElement.computedStyleMap.fontSize = "20px";
+
+const changeText = (newText) => {
+    textElement.textContent = newText;
+};
+
+changeText("アロー関数を使って文章を更新しました!");
