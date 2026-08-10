@@ -145,18 +145,31 @@
 // showStatus("たろう", 50);
 // showStatus("じろう", 20);
 
-41
+// 41
 
-const titleElement = document.querySelector("#title");
-const textElement = document.querySelector("#text");
+// const titleElement = document.querySelector("#title");
+// const textElement = document.querySelector("#text");
 
-titleElement.textContent = "JavaScriptでタイトルを書き換えました!";
+// titleElement.textContent = "JavaScriptでタイトルを書き換えました!";
 
-textElement.computedStyleMap.color = "red";
-textElement.computedStyleMap.fontSize = "20px";
+// textElement.Style.color = "red";
+// textElement.Style.fontSize = "20px";
 
-const changeText = (newText) => {
-    textElement.textContent = newText;
-};
+// const changeText = (newText) => {
+//     textElement.textContent = newText;
+// };
 
-changeText("アロー関数を使って文章を更新しました!");
+// changeText("アロー関数を使って文章を更新しました!");
+
+42
+
+const messageElement = document.querySelector("#message");
+const buttonElement = document.querySelector("#btn");
+
+
+buttonElement.addEventListener("click", () => {
+    messageElement.textContent = "ボタンがクリックされました。";
+
+    messageElement.style.color = "blue";
+
+});
