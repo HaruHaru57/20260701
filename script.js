@@ -161,15 +161,37 @@
 
 // changeText("アロー関数を使って文章を更新しました!");
 
-42
+// 42
 
-const messageElement = document.querySelector("#message");
-const buttonElement = document.querySelector("#btn");
+// const messageElement = document.querySelector("#message");
+// const buttonElement = document.querySelector("#btn");
 
 
-buttonElement.addEventListener("click", () => {
-    messageElement.textContent = "ボタンがクリックされました。";
+// buttonElement.addEventListener("click", () => {
+//     messageElement.textContent = "ボタンがクリックされました。";
 
-    messageElement.style.color = "blue";
+//     messageElement.style.color = "blue";
 
+// });
+
+43
+
+const titleElement = document.querySelector("#title");
+const inputElement = document.querySelector("#user-input");
+const sendBtn = document.querySelector("#send-btn");
+const toggleBtn = document.querySelector("#toggle-btn");
+
+sendBtn.addEventListener("click", () => {
+  const text = inputElement.value;
+  
+  if (text !== "") {
+    titleElement.textContent = `${text}さん、こんにちは！`;
+  } else {
+    titleElement.textContent = "名前を入力してください！";
+  }
+});
+
+
+toggleBtn.addEventListener("click", () => {
+  titleElement.classList.toggle("highlight");
 });
