@@ -292,3 +292,10 @@
     <br>➔ <code>要素.classList.remove("クラス名")</code>：指定したCSSクラスを削除する。
     <br>➔ <code>要素.classList.toggle("クラス名")</code>：指定したCSSクラスの追加・削除を交互に行う（ON/OFF切り替え）。
   </li>
+
+  <!-- 44日目：DOMの動的生成（createElement / appendChild） -->
+  <li>DOMの動的生成と親要素への追加
+    <br>➔ <code>document.createElement("タグ名")</code>：JavaScript上で新しいHTML要素（<code>&lt;li&gt;</code>など）を生成する。
+    <br>➔ <code>親要素.appendChild(子要素)</code>：作成した要素を、既存の親要素の中の一番最後に追加して画面に反映する。
+    <br>➔ 生成した要素に対して直接 <code>addEventListener</code> を設定することで、動的に増えた要素にもイベントを付与できる。
+  </li>

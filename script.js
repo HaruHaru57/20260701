@@ -174,24 +174,49 @@
 
 // });
 
-43
+// 43
 
-const titleElement = document.querySelector("#title");
-const inputElement = document.querySelector("#user-input");
-const sendBtn = document.querySelector("#send-btn");
-const toggleBtn = document.querySelector("#toggle-btn");
+// const titleElement = document.querySelector("#title");
+// const inputElement = document.querySelector("#user-input");
+// const sendBtn = document.querySelector("#send-btn");
+// const toggleBtn = document.querySelector("#toggle-btn");
 
-sendBtn.addEventListener("click", () => {
-  const text = inputElement.value;
+// sendBtn.addEventListener("click", () => {
+//   const text = inputElement.value;
   
-  if (text !== "") {
-    titleElement.textContent = `${text}さん、こんにちは！`;
-  } else {
-    titleElement.textContent = "名前を入力してください！";
+//   if (text !== "") {
+//     titleElement.textContent = `${text}さん、こんにちは！`;
+//   } else {
+//     titleElement.textContent = "名前を入力してください！";
+//   }
+// });
+
+
+// toggleBtn.addEventListener("click", () => {
+//   titleElement.classList.toggle("highlight");
+// });
+
+44
+
+const todoInput = document.querySelector("#todo-input");
+const addBtn = document.querySelector("#add-btn");
+const todoList = document.querySelector("#todo-list");
+
+
+addBtn.addEventListener("click", () => {
+  const taskText = todoInput.value;
+
+
+  if (taskText !== "") {
+    const li = document.createElement("li");
+    li.textContent = taskText;
+
+    li.addEventListener("click", () => {
+      li.classList.toggle("completed");
+    });
+
+    todoList.appendChild(li);
+
+    todoInput.value = "";
   }
-});
-
-
-toggleBtn.addEventListener("click", () => {
-  titleElement.classList.toggle("highlight");
 });
