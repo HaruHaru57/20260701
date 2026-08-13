@@ -196,27 +196,51 @@
 //   titleElement.classList.toggle("highlight");
 // });
 
-44
+// 44
 
-const todoInput = document.querySelector("#todo-input");
-const addBtn = document.querySelector("#add-btn");
-const todoList = document.querySelector("#todo-list");
-
-
-addBtn.addEventListener("click", () => {
-  const taskText = todoInput.value;
+// const todoInput = document.querySelector("#todo-input");
+// const addBtn = document.querySelector("#add-btn");
+// const todoList = document.querySelector("#todo-list");
 
 
-  if (taskText !== "") {
-    const li = document.createElement("li");
-    li.textContent = taskText;
+// addBtn.addEventListener("click", () => {
+//   const taskText = todoInput.value;
 
-    li.addEventListener("click", () => {
-      li.classList.toggle("completed");
-    });
 
-    todoList.appendChild(li);
+//   if (taskText !== "") {
+//     const li = document.createElement("li");
+//     li.textContent = taskText;
 
-    todoInput.value = "";
-  }
+//     li.addEventListener("click", () => {
+//       li.classList.toggle("completed");
+//     });
+
+//     todoList.appendChild(li);
+
+//     todoInput.value = "";
+//   }
+// });
+
+// 45
+
+const products = [
+  { name: "ノート", price: 100, isStock: true },
+  { name: "消しゴム", price: 50, isStock: false },
+  { name: "ペン", price: 150, isStock: true },
+  { name: "ハサミ", price: 300, isStock: true }
+];
+
+const availableProducts = products.filter((product) => {
+  return product.isStock === true;
 });
+
+console.log("--- 在庫ありの商品 ---");
+console.log(availableProducts);
+
+
+const productNames = products.map((product) => {
+  return product.name;
+});
+
+console.log("--- 商品名のリスト ---");
+console.log(productNames);
