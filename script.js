@@ -223,24 +223,60 @@
 
 // 45
 
-const products = [
-  { name: "ノート", price: 100, isStock: true },
-  { name: "消しゴム", price: 50, isStock: false },
-  { name: "ペン", price: 150, isStock: true },
-  { name: "ハサミ", price: 300, isStock: true }
-];
+// const products = [
+//   { name: "ノート", price: 100, isStock: true },
+//   { name: "消しゴム", price: 50, isStock: false },
+//   { name: "ペン", price: 150, isStock: true },
+//   { name: "ハサミ", price: 300, isStock: true }
+// ];
 
-const availableProducts = products.filter((product) => {
-  return product.isStock === true;
-});
+// const availableProducts = products.filter((product) => {
+//   return product.isStock === true;
+// });
 
-console.log("--- 在庫ありの商品 ---");
-console.log(availableProducts);
+// console.log("--- 在庫ありの商品 ---");
+// console.log(availableProducts);
 
 
-const productNames = products.map((product) => {
-  return product.name;
-});
+// const productNames = products.map((product) => {
+//   return product.name;
+// });
 
-console.log("--- 商品名のリスト ---");
-console.log(productNames);
+// console.log("--- 商品名のリスト ---");
+// console.log(productNames);
+
+// 46
+
+const loadBtn = document.querySelector("#load-btn");
+const userList = document.querySelector("#user-list");
+
+// データを取得する非同期関数（関数の前に async をつける）
+const fetchUsers = async () => {
+  userList.textContent = "読み込み中...";
+
+  try {
+    // 1. テスト用APIへリクエストを送り、結果が来るまで待つ（await）
+    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+    
+    // 2. 受け取ったデータをJSON形式（JavaScriptのオブジェクト/配列）に変換して待つ（await）
+    const users = await response.json();
+
+    // 3. リストを一度空にする
+    userList.textContent = "";
+
+    // 4. 取得したユーザーデータをループして画面（<ul>）に追加
+    for (const user of users) {
+      const li = document.createElement("li");
+      li.textContent = `${user.name} (${user.email})`;
+      userList.appendChild(li);
+    }
+
+  } catch (error) {
+    // 通信エラーなどが起きた場合の処理
+    console.error("エラーが発生しました:", error);
+    userList.textContent = "データの取得に失敗しました。";
+  }
+};
+
+// ボタンをクリックしたら非同期関数を実行
+loadBtn.addEventListener("click", fetchUsers);
