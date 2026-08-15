@@ -314,3 +314,10 @@
     <br>➔ <code>await 処理</code>：非同期処理（通信完了など）が終わるまで次の行の実行を待機する。
     <br>➔ <code>try { ... } catch (error) { ... }</code>：通信エラー等の失敗を安全に捕獲（キャッチ）して例外処理を行う。
   </li>
+
+  <!-- 47日目：JavaScriptのモジュール分割（import / export） -->
+  <li>JavaScriptのモジュール分割（ES Modules）
+    <br>➔ <code>export const 関数名 = () =&gt; { ... }</code>：変数や関数を別ファイルから参照できるよう公開（エクスポート）する。
+    <br>➔ <code>import { 関数名 } from "./ファイル名.js"</code>：別ファイルで公開された処理を読み込んで使用する。
+    <br>➔ <code>&lt;script type="module" src="main.js"&gt;&lt;/script&gt;</code>：HTML側で <code>type="module"</code> を指定することでモジュール機能が有効化される。
+  </li>
