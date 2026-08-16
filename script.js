@@ -247,36 +247,62 @@
 
 // 46
 
-const loadBtn = document.querySelector("#load-btn");
-const userList = document.querySelector("#user-list");
+// const loadBtn = document.querySelector("#load-btn");
+// const userList = document.querySelector("#user-list");
 
-// データを取得する非同期関数（関数の前に async をつける）
-const fetchUsers = async () => {
-  userList.textContent = "読み込み中...";
+// const fetchUsers = async () => {
+//   userList.textContent = "読み込み中...";
 
-  try {
-    // 1. テスト用APIへリクエストを送り、結果が来るまで待つ（await）
-    const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//   try {
+   
+//     const response = await fetch("https://jsonplaceholder.typicode.com/users");
     
-    // 2. 受け取ったデータをJSON形式（JavaScriptのオブジェクト/配列）に変換して待つ（await）
-    const users = await response.json();
+    
+//     const users = await response.json();
 
-    // 3. リストを一度空にする
-    userList.textContent = "";
+   
+//     userList.textContent = "";
 
-    // 4. 取得したユーザーデータをループして画面（<ul>）に追加
-    for (const user of users) {
-      const li = document.createElement("li");
-      li.textContent = `${user.name} (${user.email})`;
-      userList.appendChild(li);
-    }
+   
+//     for (const user of users) {
+//       const li = document.createElement("li");
+//       li.textContent = `${user.name} (${user.email})`;
+//       userList.appendChild(li);
+//     }
 
-  } catch (error) {
-    // 通信エラーなどが起きた場合の処理
-    console.error("エラーが発生しました:", error);
-    userList.textContent = "データの取得に失敗しました。";
+//   } catch (error) {
+   
+//     console.error("エラーが発生しました:", error);
+//     userList.textContent = "データの取得に失敗しました。";
+//   }
+// };
+
+
+// loadBtn.addEventListener("click", fetchUsers);
+
+// 48
+
+const userInput = document.querySelector("#username");
+const saveBtn = document.querySelector("#save-btn");
+const greeting = document.querySelector("#greeting");
+
+// 1. ページ読み込み時に、過去に保存されたデータを読み出す
+const savedName = localStorage.getItem("myUserName");
+
+if (savedName) {
+  greeting.textContent = `おかえりなさい、${savedName}さん！`;
+} else {
+  greeting.textContent = "名前がまだ保存されていません。";
+}
+
+// 2. 「保存する」ボタンを押したら localStorage に保存
+saveBtn.addEventListener("click", () => {
+  const name = userInput.value;
+
+  if (name !== "") {
+    // データ（キー: "myUserName", 値: name）を保存
+    localStorage.setItem("myUserName", name);
+    greeting.textContent = `保存しました！ ${name}さん、こんにちは！`;
+    userInput.value = "";
   }
-};
-
-// ボタンをクリックしたら非同期関数を実行
-loadBtn.addEventListener("click", fetchUsers);
+});

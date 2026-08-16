@@ -321,3 +321,10 @@
     <br>➔ <code>import { 関数名 } from "./ファイル名.js"</code>：別ファイルで公開された処理を読み込んで使用する。
     <br>➔ <code>&lt;script type="module" src="main.js"&gt;&lt;/script&gt;</code>：HTML側で <code>type="module"</code> を指定することでモジュール機能が有効化される。
   </li>
+
+  <!-- 48日目：ローカルストレージ（localStorage） -->
+  <li>ブラウザへのデータ保存（localStorage）
+    <br>➔ <code>localStorage.setItem("キー", "値")</code>：ブラウザ内にデータを永続的に保存する（ページを閉じても消えない）。
+    <br>➔ <code>localStorage.getItem("キー")</code>：保存されたデータを取得する（存在しない場合は <code>null</code> が返る）。
+    <br>➔ 配列やオブジェクトを保存する際は <code>JSON.stringify()</code> で文字列化し、読み出す際は <code>JSON.parse()</code> で復元する。
+  </li>
