@@ -328,3 +328,10 @@
     <br>➔ <code>localStorage.getItem("キー")</code>：保存されたデータを取得する（存在しない場合は <code>null</code> が返る）。
     <br>➔ 配列やオブジェクトを保存する際は <code>JSON.stringify()</code> で文字列化し、読み出す際は <code>JSON.parse()</code> で復元する。
   </li>
+  
+<!-- 49日目：総合制作（永続 ToDo アプリ） -->
+  <li>配列オブジェクトの永続化と画面描画（JSON.stringify / parse）
+    <br>➔ <code>JSON.stringify(配列)</code>：配列やオブジェクトを localStorage に保存可能な文字列データに変換する。
+    <br>➔ <code>JSON.parse(文字列)</code>：保存された文字列データを、元の配列やオブジェクトとして復元する。
+    <br>➔ データの変更時に「ローカルストレージへの保存」と「画面の再描画（render）」を一括して行う設計が基本となる。
+  </li>

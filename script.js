@@ -282,27 +282,79 @@
 
 // 48
 
-const userInput = document.querySelector("#username");
-const saveBtn = document.querySelector("#save-btn");
-const greeting = document.querySelector("#greeting");
+// const userInput = document.querySelector("#username");
+// const saveBtn = document.querySelector("#save-btn");
+// const greeting = document.querySelector("#greeting");
 
-// 1. ページ読み込み時に、過去に保存されたデータを読み出す
-const savedName = localStorage.getItem("myUserName");
+// // 1. ページ読み込み時に、過去に保存されたデータを読み出す
+// const savedName = localStorage.getItem("myUserName");
 
-if (savedName) {
-  greeting.textContent = `おかえりなさい、${savedName}さん！`;
-} else {
-  greeting.textContent = "名前がまだ保存されていません。";
-}
+// if (savedName) {
+//   greeting.textContent = `おかえりなさい、${savedName}さん！`;
+// } else {
+//   greeting.textContent = "名前がまだ保存されていません。";
+// }
 
-// 2. 「保存する」ボタンを押したら localStorage に保存
-saveBtn.addEventListener("click", () => {
-  const name = userInput.value;
+// // 2. 「保存する」ボタンを押したら localStorage に保存
+// saveBtn.addEventListener("click", () => {
+//   const name = userInput.value;
 
-  if (name !== "") {
-    // データ（キー: "myUserName", 値: name）を保存
-    localStorage.setItem("myUserName", name);
-    greeting.textContent = `保存しました！ ${name}さん、こんにちは！`;
-    userInput.value = "";
+//   if (name !== "") {
+//     // データ（キー: "myUserName", 値: name）を保存
+//     localStorage.setItem("myUserName", name);
+//     greeting.textContent = `保存しました！ ${name}さん、こんにちは！`;
+//     userInput.value = "";
+//   }
+// });
+
+// 49
+
+const todoInput = document.querySelector("#todo-input");
+const addBtn = document.querySelector("#add-btn");
+const todoList = document.querySelector("#todo-list");
+
+// 1. ローカルストレージから初期データを読み出す（無ければ空配列）
+const savedData = localStorage.getItem("todoTasks");
+let tasks = savedData ? JSON.parse(savedData) : [];
+
+// 画面を更新（描画）する関数
+const renderTasks = () => {
+  todoList.innerHTML = ""; // 一旦リストをクリア
+
+  tasks.forEach((task, index) => {
+    const li = document.createElement("li");
+    li.textContent = task.text;
+
+    if (task.completed) {
+      li.classList.add("completed");
+    }
+
+    // クリックで完了状態を切り替え
+    li.addEventListener("click", () => {
+      tasks[index].completed = !tasks[index].completed;
+      saveAndRender();
+    });
+
+    todoList.appendChild(li);
+  });
+};
+
+// データを保存して画面を更新する関数
+const saveAndRender = () => {
+  localStorage.setItem("todoTasks", JSON.stringify(tasks));
+  renderTasks();
+};
+
+// 2. 「追加」ボタンが押された時の処理
+addBtn.addEventListener("click", () => {
+  const text = todoInput.value.trim();
+
+  if (text !== "") {
+    tasks.push({ text: text, completed: false });
+    todoInput.value = "";
+    saveAndRender();
   }
 });
+
+// 初期表示
+renderTasks();
