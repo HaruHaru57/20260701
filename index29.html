@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 54 - アコーディオンUI</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 500px; }
+    
+    .faq-item { border: 1px solid #ccc; border-radius: 6px; margin-bottom: 10px; overflow: hidden; }
+    
+    .faq-question {
+      background-color: #f0f0f0; padding: 15px; margin: 0; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    
+    .faq-answer { display: none; padding: 15px; background-color: #fff; border-top: 1px solid #eee; }
+
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question::after { content: "▲"; }
+    .faq-question::after { content: "▼"; }
+  </style>
+</head>
+<body>
+  <h1>よくある質問（FAQ）</h1>
+
+  <div class="faq-item">
+    <h3 class="faq-question">Q. 支払い方法は何がありますか？</h3>
+    <div class="faq-answer">クレジットカード、銀行振込、各種電子マネーに対応しています。</div>
+  </div>
+
+  <div class="faq-item">
+    <h3 class="faq-question">Q. 注文から発送までどのくらいかかりますか？</h3>
+    <div class="faq-answer">通常、ご注文から1〜3営業日以内に発送いたします。</div>
+  </div>
+
+  <script type="module" src="script3.js"></script>
+</body>
+</html>
