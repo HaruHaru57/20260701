@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 56 - タブ切り替えUI</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 500px; }
+    
+    .tab-menu { display: flex; list-style: none; padding: 0; margin: 0; border-bottom: 2px solid #ccc; }
+    .tab-item { padding: 10px 20px; cursor: pointer; border: 1px solid #ccc; border-bottom: none; background: #f0f0f0; margin-right: 4px; border-radius: 4px 4px 0 0; }
+    .tab-item.active { background: #fff; font-weight: bold; border-top: 3px solid #007bff; }
+
+    .tab-content { display: none; padding: 20px; border: 1px solid #ccc; border-top: none; }
+    .tab-content.active { display: block; }
+  </style>
+</head>
+<body>
+  <h1>タブ切り替えUI</h1>
+
+  <ul class="tab-menu">
+    <li class="tab-item active" data-tab="tab-1">お知らせ</li>
+    <li class="tab-item" data-tab="tab-2">製品情報</li>
+    <li class="tab-item" data-tab="tab-3">お問い合わせ</li>
+  </ul>
+
+  <div id="tab-1" class="tab-content active">最新のお知らせです。新機能が追加されました！</div>
+  <div id="tab-2" class="tab-content">製品ラインナップの一覧はこちらからご確認いただけます。</div>
+  <div id="tab-3" class="tab-content">ご不明な点がございましたら、フォームよりご連絡ください。</div>
+
+  <script type="module" src="script5.js"></script>
+</body>
+</html>
