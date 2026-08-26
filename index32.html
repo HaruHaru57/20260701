@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 57 - フォームバリデーション</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 400px; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; }
+    input { width: 100%; padding: 8px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 4px; }
+    
+    /* エラー時のスタイル */
+    input.error-border { border-color: red; background-color: #fff0f0; }
+    .error-message { color: red; font-size: 0.85rem; margin-top: 4px; min-height: 1.2em; }
+    button { padding: 10px 20px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>会員登録フォーム</h1>
+
+  <form id="signup-form">
+    <div class="form-group">
+      <label for="username">ユーザー名（3文字以上）</label>
+      <input type="text" id="username" placeholder="例: taro">
+      <div id="username-error" class="error-message"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">メールアドレス</label>
+      <input type="text" id="email" placeholder="例: test@example.com">
+      <div id="email-error" class="error-message"></div>
+    </div>
+
+    <button type="submit">送信</button>
+  </form>
+
+  <script type="module" src="script6.js"></script>
+</body>
+</html>
