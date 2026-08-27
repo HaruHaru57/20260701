@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 58 - トップへ戻るボタン</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; line-height: 1.8; }
+    
+    /* スクロールを発生させるためのダミーエリア */
+    .content-box { height: 1500px; background: linear-gradient(to bottom, #e3f2fd, #bbdefb); padding: 20px; border-radius: 8px; }
+
+    /* トップへ戻るボタン（固定配置＆初期は非表示） */
+    #back-to-top {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 50px; height: 50px; background-color: #007bff; color: white;
+      border: none; border-radius: 50%; cursor: pointer; font-size: 1.2rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+      
+      /* フェードインアニメーション用の設定 */
+      opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s;
+    }
+
+    /* activeクラスがついたら表示 */
+    #back-to-top.active { opacity: 1; visibility: visible; }
+  </style>
+</head>
+<body>
+  <h1>トップへ戻るボタンのテスト</h1>
+  <p>下にスクロールしてみてください！</p>
+
+  <div class="content-box">
+    <p>スクロールすると右下に「▲」ボタンが表示されます。</p>
+  </div>
+
+  <!-- ページトップへ戻るボタン -->
+  <button id="back-to-top">▲</button>
+
+  <script type="module" src="script7.js"></script>
+</body>
+</html>
