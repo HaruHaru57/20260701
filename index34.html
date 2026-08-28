@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Day 59 - Persistent ToDo List</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; max-width: 400px; }
+    .input-group { display: flex; gap: 8px; margin-bottom: 20px; }
+    input { flex: 1; padding: 8px; font-size: 1rem; }
+    button { padding: 8px 16px; cursor: pointer; }
+    ul { list-style: none; padding: 0; }
+    li { display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; background: #f4f4f4; border-radius: 4px; margin-bottom: 8px; }
+    .delete-btn { background: #ff4d4d; color: white; border: none; border-radius: 4px; padding: 4px 8px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>永続化 ToDoリスト</h1>
+
+  <div class="input-group">
+    <input type="text" id="todo-input" placeholder="タスクを入力...">
+    <button id="add-btn">追加</button>
+  </div>
+
+  <ul id="todo-list"></ul>
+
+  <script type="module" src="script8.js"></script>
+</body>
+</html>

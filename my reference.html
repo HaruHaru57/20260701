@@ -378,3 +378,9 @@
     <br>➔ <code>window.scrollY</code> + <code>scroll</code> イベント：現在のスクロール量をミリ秒単位で検知し、閾値（300pxなど）を超えた際にUIを表示する。
     <br>➔ <code>window.scrollTo({ top: 0, behavior: 'smooth' })</code>：ページ最上部へ滑らかにスクロール移動させる。
   </li>
+
+  <!-- 59日目：JavaScript応用（LocalStorageデータ永続化） -->
+  <li>Web Storage APIを用いたデータのローカル保存と復元
+    <br>➔ <code>localStorage.setItem("key", JSON.stringify(data))</code>：配列やオブジェクトをJSON文字列に変換してブラウザへ保存。
+    <br>➔ <code>JSON.parse(localStorage.getItem("key"))</code>：保存されたJSON文字列を取得し、JavaScriptオブジェクト/配列に復元する。
+  </li>
