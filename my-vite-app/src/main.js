@@ -1,60 +1,31 @@
-import './style.css'
-import heroImg from './assets/hero.png'
-import javascriptLogo from './assets/javascript.svg'
-import viteLogo from './assets/vite.svg'
-import { setupCounter } from './counter.js'
+import dayjs from "dayjs";
+import confetti from "canvas-confetti";
 
-document.querySelector('#app').innerHTML = `
-<section id="center">
-  <div class="hero">
-    <img src="${heroImg}" class="base" width="170" height="179">
-    <img src="${javascriptLogo}" class="framework" alt="JavaScript logo"/>
-    <img src="${viteLogo}" class="vite" alt="Vite logo" />
+// 画面の初期描画
+document.querySelector("#app").innerHTML = `
+  <div style="text-align: center; padding: 40px; font-family: sans-serif;">
+    <h1>🎉 Vite + npm パッケージ連携</h1>
+    <p id="clock" style="font-size: 1.5rem; font-weight: bold; color: #4F46E5;"></p>
+    <button id="celebrate-btn" style="padding: 12px 24px; font-size: 1rem; cursor: pointer; border-radius: 8px; border: none; background: #4F46E5; color: white;">
+      紙吹雪を降らせる！
+    </button>
   </div>
-  <div>
-    <h1>Get started</h1>
-    <p>Edit <code>src/main.js</code> and save to test <code>HMR</code></p>
-  </div>
-  <button id="counter" type="button" class="counter"></button>
-</section>
+`;
 
-<div class="ticks"></div>
+// 1. dayjs を使ったリアルタイム時計
+const clockEl = document.querySelector("#clock");
+const updateClock = () => {
+  clockEl.textContent = dayjs().format("YYYY年MM月DD日 HH:mm:ss");
+};
+setInterval(updateClock, 1000);
+updateClock();
 
-<section id="next-steps">
-  <div id="docs">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#documentation-icon"></use></svg>
-    <h2>Documentation</h2>
-    <p>Your questions, answered</p>
-    <ul>
-      <li>
-        <a href="https://vite.dev/" target="_blank">
-          <img class="logo" src="${viteLogo}" alt="" />
-          Explore Vite
-        </a>
-      </li>
-      <li>
-        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-          <img class="button-icon" src="${javascriptLogo}" alt="">
-          Learn more
-        </a>
-      </li>
-    </ul>
-  </div>
-  <div id="social">
-    <svg class="icon" role="presentation" aria-hidden="true"><use href="/icons.svg#social-icon"></use></svg>
-    <h2>Connect with us</h2>
-    <p>Join the Vite community</p>
-    <ul>
-      <li><a href="https://github.com/vitejs/vite" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#github-icon"></use></svg>GitHub</a></li>
-      <li><a href="https://chat.vite.dev/" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#discord-icon"></use></svg>Discord</a></li>
-      <li><a href="https://x.com/vite_js" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#x-icon"></use></svg>X.com</a></li>
-      <li><a href="https://bsky.app/profile/vite.dev" target="_blank"><svg class="button-icon" role="presentation" aria-hidden="true"><use href="/icons.svg#bluesky-icon"></use></svg>Bluesky</a></li>
-    </ul>
-  </div>
-</section>
-
-<div class="ticks"></div>
-<section id="spacer"></section>
-`
-
-setupCounter(document.querySelector('#counter'))
+// 2. canvas-confetti を使ったボタンイベント
+const btn = document.querySelector("#celebrate-btn");
+btn.addEventListener("click", () => {
+  confetti({
+    particleCount: 100,
+    spread: 70,
+    origin: { y: 0.6 }
+  });
+});
