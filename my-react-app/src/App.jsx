@@ -1,25 +1,93 @@
-import { Card } from "./Card";
+import { useState } from "react";
+import { TaskItem } from "./TaskItem";
 
 export function App() {
-  const taskList = [
-    { id: 1, title: "React の Props の概念理解", category: "フロントエンド", isCompleted: true },
-    { id: 2, title: "Vite + React でコンポーネント分割", category: "環境構築", isCompleted: true },
-    { id: 3, title: "Day 70 ミニアプリの設計", category: "実践開発", isCompleted: false },
-  ];
+  const [tasks, setTasks] = useState([
+    { id: 1, title: "React のコンポーネント設計を理解する", isCompleted: true },
+    { id: 2, title: "State と Props の連携を復習する", isCompleted: false },
+  ]);
+  const [inputText, setInputText] = useState("");
+
+  // タスク追加
+  const handleAddTask = (e) => {
+    e.preventDefault();
+    if (!inputText.trim()) return;
+
+    const newTask = {
+      id: Date.now(),
+      title: inputText,
+      isCompleted: false,
+    };
+
+    setTasks([...tasks, newTask]);
+    setInputText("");
+  };
+
+  // 完了フラグ切り替え
+  const handleToggleTask = (id) => {
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+      )
+    );
+  };
+
+  // タスク削除
+  const handleDeleteTask = (id) => {
+    setTasks(tasks.filter((task) => task.id !== id));
+  };
+
+  // 未完了タスク数の計算
+  const remainingCount = tasks.filter((t) => !t.isCompleted).length;
 
   return (
-    <div style={{ padding: "20px", maxWidth: "400px", fontFamily: "sans-serif" }}>
-      <h1>Day 69: Props によるコンポーネント分割</h1>
+    <div style={{ padding: "24px", maxWidth: "450px", margin: "0 auto", fontFamily: "sans-serif" }}>
+      <h1 style={{ fontSize: "1.5rem", marginBottom: "8px" }}>📝 React Task Manager</h1>
+      <p style={{ color: "#6b7280", marginBottom: "16px" }}>
+        未完了タスク: <strong>{remainingCount}</strong> 件
+      </p>
 
-      {/* 配列データを map でループし、Props を渡して Card を複数レンダリング */}
-      {taskList.map((task) => (
-        <Card
-          key={task.id}
-          title={task.title}
-          category={task.category}
-          isCompleted={task.isCompleted}
+      {/* タスク入力フォーム */}
+      <form onSubmit={handleAddTask} style={{ display: "flex", gap: "8px", marginBottom: "20px" }}>
+        <input
+          type="text"
+          value={inputText}
+          onChange={(e) => setInputText(e.target.value)}
+          placeholder="新しいタスクを入力..."
+          style={{
+            flex: 1,
+            padding: "8px 12px",
+            borderRadius: "6px",
+            border: "1px solid #d1d5db"
+          }}
         />
-      ))}
+        <button
+          type="submit"
+          style={{
+            padding: "8px 16px",
+            borderRadius: "6px",
+            border: "none",
+            backgroundColor: "#4f46e5",
+            color: "white",
+            fontWeight: "bold",
+            cursor: "pointer"
+          }}
+        >
+          追加
+        </button>
+      </form>
+
+      {/* タスクリスト表示 */}
+      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            onToggle={handleToggleTask}
+            onDelete={handleDeleteTask}
+          />
+        ))}
+      </ul>
     </div>
   );
 }
