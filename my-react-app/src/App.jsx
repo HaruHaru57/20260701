@@ -1,93 +1,55 @@
-import { useState } from "react";
-import { TaskItem } from "./TaskItem";
+import { useState, useEffect } from "react";
 
 export function App() {
-  const [tasks, setTasks] = useState([
-    { id: 1, title: "React のコンポーネント設計を理解する", isCompleted: true },
-    { id: 2, title: "State と Props の連携を復習する", isCompleted: false },
-  ]);
-  const [inputText, setInputText] = useState("");
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // タスク追加
-  const handleAddTask = (e) => {
-    e.preventDefault();
-    if (!inputText.trim()) return;
-
-    const newTask = {
-      id: Date.now(),
-      title: inputText,
-      isCompleted: false,
+  // コンポーネントの初回レンダリング時に API 通信を実行
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        // 外部のダミーAPIへデータをリクエスト
+        const response = await fetch("https://jsonplaceholder.typicode.com/users");
+        const data = await response.json();
+        
+        setUsers(data); // 取得したデータで State を更新
+      } catch (error) {
+        console.error("データの取得に失敗しました:", error);
+      } finally {
+        setLoading(false); // 通信完了後にローディングを解除
+      }
     };
 
-    setTasks([...tasks, newTask]);
-    setInputText("");
-  };
-
-  // 完了フラグ切り替え
-  const handleToggleTask = (id) => {
-    setTasks(
-      tasks.map((task) =>
-        task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
-      )
-    );
-  };
-
-  // タスク削除
-  const handleDeleteTask = (id) => {
-    setTasks(tasks.filter((task) => task.id !== id));
-  };
-
-  // 未完了タスク数の計算
-  const remainingCount = tasks.filter((t) => !t.isCompleted).length;
+    fetchUsers();
+  }, []); // 第2引数を空配列 [] にすることで初回1回のみ実行される
 
   return (
-    <div style={{ padding: "24px", maxWidth: "450px", margin: "0 auto", fontFamily: "sans-serif" }}>
-      <h1 style={{ fontSize: "1.5rem", marginBottom: "8px" }}>📝 React Task Manager</h1>
-      <p style={{ color: "#6b7280", marginBottom: "16px" }}>
-        未完了タスク: <strong>{remainingCount}</strong> 件
-      </p>
+    <div style={{ padding: "24px", maxWidth: "600px", margin: "0 auto", fontFamily: "sans-serif" }}>
+      <h1>🌐 Day 71: ユーザー一覧（API通信）</h1>
 
-      {/* タスク入力フォーム */}
-      <form onSubmit={handleAddTask} style={{ display: "flex", gap: "8px", marginBottom: "20px" }}>
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="新しいタスクを入力..."
-          style={{
-            flex: 1,
-            padding: "8px 12px",
-            borderRadius: "6px",
-            border: "1px solid #d1d5db"
-          }}
-        />
-        <button
-          type="submit"
-          style={{
-            padding: "8px 16px",
-            borderRadius: "6px",
-            border: "none",
-            backgroundColor: "#4f46e5",
-            color: "white",
-            fontWeight: "bold",
-            cursor: "pointer"
-          }}
-        >
-          追加
-        </button>
-      </form>
-
-      {/* タスクリスト表示 */}
-      <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            onToggle={handleToggleTask}
-            onDelete={handleDeleteTask}
-          />
-        ))}
-      </ul>
+      {loading ? (
+        <p>データを受け込み中...</p>
+      ) : (
+        <ul style={{ listStyle: "none", padding: 0 }}>
+          {users.map((user) => (
+            <li
+              key={user.id}
+              style={{
+                padding: "12px 16px",
+                marginBottom: "8px",
+                borderRadius: "8px",
+                border: "1px solid #e5e7eb",
+                backgroundColor: "#f9fafb"
+              }}
+            >
+              <strong style={{ fontSize: "1.1rem" }}>{user.name}</strong>
+              <p style={{ margin: "4px 0 0", color: "#6b7280", fontSize: "0.9rem" }}>
+                📧 {user.email} | 🏢 {user.company.name}
+              </p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
