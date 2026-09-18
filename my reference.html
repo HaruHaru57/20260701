@@ -507,3 +507,9 @@
     <br>➔ <b>Vitest / jsdom</b>：Vite 環境に最適化された高速テストランナーを用いて、DOM 環境をシミュレートしたテストを実行。
     <br>➔ <b>React Testing Library</b>：<code>render</code> や <code>screen.getByText</code> を用い、ユーザー視点の操作・表示（アクセシビリティクエリ）に基づくコンポーネント検証を実施。
   </li>
+
+  <!-- 80日目：React Custom Hooks の単体テスト（renderHook / act） -->
+  <li>renderHook と act を活用した Custom Hooks のロジックテスト
+    <br>➔ <code>renderHook(() => useXxx())</code>：コンポーネントから独立させてフックの返り値（<code>result.current</code>）を検証。
+    <br>➔ <code>act(() => { ... })</code>：状態更新（setState）を伴う関数呼出を同期的に安全処理し、最新の状態変化を正確にテスト。
+  </li>
