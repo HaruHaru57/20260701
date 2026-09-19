@@ -513,3 +513,9 @@
     <br>➔ <code>renderHook(() => useXxx())</code>：コンポーネントから独立させてフックの返り値（<code>result.current</code>）を検証。
     <br>➔ <code>act(() => { ... })</code>：状態更新（setState）を伴う関数呼出を同期的に安全処理し、最新の状態変化を正確にテスト。
   </li>
+
+  <!-- 81日目：MSW (Mock Service Worker) による API 通信モックテスト -->
+  <li>MSW (v2) を使用したネットワーク層での API 応答モック環境の構築
+    <br>➔ <code>setupServer()</code> / <code>HttpResponse.json()</code>：実際の外部サーバーへ通信せずネットワークリクエストをインターセプト。
+    <br>➔ <code>waitFor()</code>：非同期データ取得（loading/data の変化）が完了するまでアサーション待機し、安全にテスト評価。
+  </li>
