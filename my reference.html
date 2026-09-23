@@ -537,3 +537,10 @@
     <br>➔ <b>interface / type</b>：Props の構造と型（`string`, `number`, オプショナル `?` など）を厳格に定義。
     <br>➔ <b>useState&lt;T&gt;</b>：ジェネリクスを用いて State が保持する型を指定し、予期せぬデータ型の混入を防止する。
   </li>
+
+  <!-- 85日目：TypeScript実践（React イベントハンドラの型定義） -->
+  <li>React イベントオブジェクトにおける型安全化
+    <br>➔ <b>React.ChangeEvent&lt;HTMLInputElement&gt;</b>：`input` や `textarea` の入力変更イベント型。
+    <br>➔ <b>React.FormEvent&lt;HTMLFormElement&gt;</b>：`form` の送信イベント型。`e.preventDefault()` などを安全に実行。
+    <br>➔ <b>React.MouseEvent&lt;HTMLButtonElement&gt;</b>：ボタン等のクリックイベント型。
+  </li>
