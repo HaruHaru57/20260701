@@ -544,3 +544,9 @@
     <br>➔ <b>React.FormEvent&lt;HTMLFormElement&gt;</b>：`form` の送信イベント型。`e.preventDefault()` などを安全に実行。
     <br>➔ <b>React.MouseEvent&lt;HTMLButtonElement&gt;</b>：ボタン等のクリックイベント型。
   </li>
+
+  <!-- 86日目：TypeScript実践（React useRef の型定義） -->
+  <li>React useRef における DOM 要素の型安全な参照
+    <br>➔ <b>useRef&lt;HTMLInputElement&gt;(null)</b>：参照する DOM 要素（`HTMLInputElement`, `HTMLDivElement` など）を指定して初期値 `null` で生成。
+    <br>➔ <b>ref.current?.focus()</b>：`current` の null チェック（オプショナルチェイニング `?.` や条件分岐）を行うことで安全に DOM 操作を実施。
+  </li>
