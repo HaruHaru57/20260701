@@ -1,11 +1,14 @@
-import { FocusInput } from "./FocusInput";
+import { ThemeProvider } from "./ThemeContext";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function App() {
   return (
-    <div style={{ padding: "20px", fontFamily: "sans-serif", maxWidth: "500px" }}>
-      <h1>Day 86 - useRef の型定義</h1>
-      <FocusInput />
-    </div>
+    <ThemeProvider>
+      <div style={{ padding: "20px", fontFamily: "sans-serif", maxWidth: "500px" }}>
+        <h1>Day 87 - useContext の型定義</h1>
+        <ThemeToggle />
+      </div>
+    </ThemeProvider>
   );
 }
 

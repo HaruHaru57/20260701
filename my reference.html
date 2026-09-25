@@ -550,3 +550,9 @@
     <br>➔ <b>useRef&lt;HTMLInputElement&gt;(null)</b>：参照する DOM 要素（`HTMLInputElement`, `HTMLDivElement` など）を指定して初期値 `null` で生成。
     <br>➔ <b>ref.current?.focus()</b>：`current` の null チェック（オプショナルチェイニング `?.` や条件分岐）を行うことで安全に DOM 操作を実施。
   </li>
+
+  <!-- 87日目：TypeScript実践（React useContext の型定義） -->
+  <li>React useContext における Context / Provider の型安全化
+    <br>➔ <b>createContext&lt;T | undefined&gt;(undefined)</b>：初期値を `undefined` として型定義し、Provider外からの呼び出しを防止。
+    <br>➔ <b>カスタムフック化</b>：`useTheme` 内で Context の存在チェックを行い、呼び出し側でオプショナルチェイニング不要の完全な型推論を実現。
+  </li>
