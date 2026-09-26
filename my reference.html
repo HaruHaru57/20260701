@@ -556,3 +556,9 @@
     <br>➔ <b>createContext&lt;T | undefined&gt;(undefined)</b>：初期値を `undefined` として型定義し、Provider外からの呼び出しを防止。
     <br>➔ <b>カスタムフック化</b>：`useTheme` 内で Context の存在チェックを行い、呼び出し側でオプショナルチェイニング不要の完全な型推論を実現。
   </li>
+
+  <!-- 88日目：TypeScript実践（React カスタムフックの型定義） -->
+  <li>React カスタムフックのジェネリクスと戻り値の型定義
+    <br>➔ <b>useLocalStorage&lt;T&gt;(key: string, initialValue: T)</b>：ジェネリクス `T` を用いることで、文字列・数値・オブジェクトなど多様なデータの型安全な永続化を柔軟にサポート。
+    <br>➔ <b>[T, (value: T) => void]</b>：`useState` と同様のタプル形式（値と更新関数）で戻り値の型を指定し、呼び出し側での展開と補完を快適化。
+  </li>
