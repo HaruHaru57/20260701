@@ -1,10 +1,10 @@
-import { LocalStorageDemo } from "./LocalStorageDemo";
+import { UserList } from "./UserList";
 
 export function App() {
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif", maxWidth: "500px" }}>
-      <h1>Day 88 - カスタムフックの型定義</h1>
-      <LocalStorageDemo />
+      <h1>Day 89 - 非同期処理とAPI通信の型定義</h1>
+      <UserList />
     </div>
   );
 }

@@ -562,3 +562,9 @@
     <br>➔ <b>useLocalStorage&lt;T&gt;(key: string, initialValue: T)</b>：ジェネリクス `T` を用いることで、文字列・数値・オブジェクトなど多様なデータの型安全な永続化を柔軟にサポート。
     <br>➔ <b>[T, (value: T) => void]</b>：`useState` と同様のタプル形式（値と更新関数）で戻り値の型を指定し、呼び出し側での展開と補完を快適化。
   </li>
+
+  <!-- 89日目：TypeScript実践（非同期処理・API通信の型定義） -->
+  <li>TypeScript における API 通信とエラーハンドリングの型安全化
+    <br>➔ <b>APIレスポンスの型定義（interface User）</b>：受信データの構造を事前に定義し、`as User[]` 等で型アサーションを行うことで補完を有効化。
+    <br>➔ <b>catch(err) の型絞り込み</b>：`catch` 節の `err` は `unknown` 型になるため、`if (err instanceof Error)` で安全にプロパティアクセスを実行。
+  </li>
