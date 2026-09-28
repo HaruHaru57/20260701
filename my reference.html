@@ -568,3 +568,9 @@
     <br>➔ <b>APIレスポンスの型定義（interface User）</b>：受信データの構造を事前に定義し、`as User[]` 等で型アサーションを行うことで補完を有効化。
     <br>➔ <b>catch(err) の型絞り込み</b>：`catch` 節の `err` は `unknown` 型になるため、`if (err instanceof Error)` で安全にプロパティアクセスを実行。
   </li>
+
+  <!-- 90日目：Phase 4 総合演習（TypeScript × React Task Manager） -->
+  <li>TypeScript × React による実践的な型安全アプリケーションの構築
+    <br>➔ <b>型定義の集約（types.ts）</b>：<code>interface Task</code> や Union型 <code>FilterType</code> をモジュール化し、コンポーネント全体で一貫した型チェックを維持。
+    <br>➔ <b>カスタムフック・useRef・イベント型の総動員</b>：<code>useLocalStorage</code> によるデータ保持、<code>useRef</code> による自動フォーカス、<code>FormEvent</code> / <code>ChangeEvent</code> のハンドリングを型安全に完結。
+  </li>

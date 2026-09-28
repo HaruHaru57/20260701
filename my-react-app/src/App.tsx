@@ -1,10 +1,10 @@
-import { UserList } from "./UserList";
+import { TaskManager } from "./TaskManager";
 
 export function App() {
   return (
-    <div style={{ padding: "20px", fontFamily: "sans-serif", maxWidth: "500px" }}>
-      <h1>Day 89 - 非同期処理とAPI通信の型定義</h1>
-      <UserList />
+    <div style={{ padding: "24px", fontFamily: "sans-serif", maxWidth: "500px", margin: "0 auto" }}>
+      <h1>Day 90 - Phase 4 総合演習</h1>
+      <TaskManager />
     </div>
   );
 }
