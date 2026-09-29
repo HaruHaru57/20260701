@@ -1,10 +1,19 @@
-import { TaskManager } from "./TaskManager";
+import { useState, useEffect } from "react";
+import HomePage from "./app/page";
+import AboutPage from "./app/about/page";
 
 export function App() {
+  const [path, setPath] = useState(window.location.pathname);
+
+  useEffect(() => {
+    const handlePopState = () => setPath(window.location.pathname);
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
+
   return (
-    <div style={{ padding: "24px", fontFamily: "sans-serif", maxWidth: "500px", margin: "0 auto" }}>
-      <h1>Day 90 - Phase 4 総合演習</h1>
-      <TaskManager />
+    <div>
+      {path === "/about" ? <AboutPage /> : <HomePage />}
     </div>
   );
 }
