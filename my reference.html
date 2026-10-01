@@ -586,3 +586,9 @@
     <br>➔ <b>Server Component (標準)</b>：サーバー上で実行・HTML化。データ取得を高速に行い、クライアントへの JS 転送量を削減。
     <br>➔ <b>Client Component (`"use client"`)</b>：ファイル先頭に宣言。`useState` / `useEffect` やクリックイベント等を扱う場合に使用。
   </li>
+
+  <!-- 93日目：Next.js ネストされたレイアウトと動的ルーティング -->
+  <li>Next.js App Router における layout.tsx と 動的パス ([id])
+    <br>➔ <b>app/layout.tsx</b>：全ページ共有のヘッダー・フッター等を定義し、`children` をラップして描画（ページ遷移時も状態を保持）。
+    <br>➔ <b>app/users/[id]/page.tsx</b>：フォルダ名を `[id]` にすることで `/users/1` などの動的パラメータを `params.id` として取得可能。
+  </li>
