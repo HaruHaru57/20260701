@@ -592,3 +592,9 @@
     <br>➔ <b>app/layout.tsx</b>：全ページ共有のヘッダー・フッター等を定義し、`children` をラップして描画（ページ遷移時も状態を保持）。
     <br>➔ <b>app/users/[id]/page.tsx</b>：フォルダ名を `[id]` にすることで `/users/1` などの動的パラメータを `params.id` として取得可能。
   </li>
+
+  <!-- 94日目：Next.js Server Components でのデータ取得とキャッシュ制御 -->
+  <li>Next.js App Router における サーバーサイドデータ取得
+    <br>➔ <b>async/await 直書き</b>：Server Component 内で直接 `await fetch()` をコールし、クライアント側の `useEffect` や JS バンドル量を削減。
+    <br>➔ <b>fetch キャッシュ戦略</b>：`cache: 'force-cache'` (SSG), `revalidate: N` (ISR), `cache: 'no-store'` (SSR) を使い分けて最適なパフォーマンスを実現。
+  </li>
