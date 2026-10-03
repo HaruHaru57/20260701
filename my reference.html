@@ -598,3 +598,9 @@
     <br>➔ <b>async/await 直書き</b>：Server Component 内で直接 `await fetch()` をコールし、クライアント側の `useEffect` や JS バンドル量を削減。
     <br>➔ <b>fetch キャッシュ戦略</b>：`cache: 'force-cache'` (SSG), `revalidate: N` (ISR), `cache: 'no-store'` (SSR) を使い分けて最適なパフォーマンスを実現。
   </li>
+
+  <!-- 95日目：Next.js Server Actions によるサーバー処理 -->
+  <li>Next.js App Router における Server Actions とフォーム制御
+    <br>➔ <b>"use server" ディレクティブ</b>：関数またはファイル単位でサーバー専用処理であることを宣言し、クライアントから安全に呼び出し。
+    <br>➔ <b>FormData オブジェクトの受取</b>：`<form>` の入力データを `formData.get('name')` で取得し、API エンドポイントを作らずに直接データ送信・検証を実行。
+  </li>
