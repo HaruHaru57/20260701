@@ -6,6 +6,7 @@ import PostsPage from "./app/posts/page";
 import CreatePostPage from "./app/posts/create/page";
 import PostDetailPage from "./app/posts/[id]/page";
 import UIDemoPage from "./app/ui-demo/page";
+import CartDemoPage from "./app/cart-demo/page";
 
 export function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -35,10 +36,13 @@ export function App() {
         <a href="/" style={{ marginRight: "12px" }}>Top</a>
         <a href="/posts" style={{ marginRight: "12px" }}>Posts</a>
         <a href="/posts/create" style={{ marginRight: "12px" }}>Create</a>
-        <a href="/ui-demo">UI Demo</a>
+        <a href="/ui-demo" style={{ marginRight: "12px" }}>UI Demo</a>
+        <a href="/cart-demo">Cart Demo (Zustand)</a>
       </nav>
 
-      {path === "/ui-demo" ? (
+      {path === "/cart-demo" ? (
+        <CartDemoPage />
+      ) : path === "/ui-demo" ? (
         <UIDemoPage />
       ) : postMatch ? (
         postDetailComponent || <p>🔄 記事データを取得中...</p>
