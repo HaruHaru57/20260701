@@ -622,3 +622,9 @@
     <br>➔ <b>Provider 不要のアーキテクチャ</b>：コンポーネントツリー全体をラッパーで囲む必要がなく、フック形式でどこからでも直接アクセス。
     <br>➔ <b>型親和性と保守性</b>：ストア構造とアクションをTypeScriptで定義することで、高い型安全性と直感的な状態更新を実現。
   </li>
+
+  <!-- 99日目：NextAuth.js (Auth.js) によるユーザー認証の基礎 -->
+  <li>NextAuth.js (Auth.js) と Next.js App Router における認証設計
+    <br>➔ <b>Route Handler (`/api/auth/[...nextauth]`)</b>：OAuth 連携や Credentials 認証の処理を一括して集約・提供。
+    <br>➔ <b>セッション管理と画面保護</b>：`useSession()` で認証状態を取得し、`middleware.ts` を用いて未ログインユーザーの閲覧制御を実施。
+  </li>

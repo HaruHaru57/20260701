@@ -7,6 +7,7 @@ import CreatePostPage from "./app/posts/create/page";
 import PostDetailPage from "./app/posts/[id]/page";
 import UIDemoPage from "./app/ui-demo/page";
 import CartDemoPage from "./app/cart-demo/page";
+import AuthDemoPage from "./app/auth-demo/page";
 
 export function App() {
   const [path, setPath] = useState(window.location.pathname);
@@ -37,10 +38,13 @@ export function App() {
         <a href="/posts" style={{ marginRight: "12px" }}>Posts</a>
         <a href="/posts/create" style={{ marginRight: "12px" }}>Create</a>
         <a href="/ui-demo" style={{ marginRight: "12px" }}>UI Demo</a>
-        <a href="/cart-demo">Cart Demo (Zustand)</a>
+        <a href="/cart-demo" style={{ marginRight: "12px" }}>Cart Demo</a>
+        <a href="/auth-demo">Auth Demo</a>
       </nav>
 
-      {path === "/cart-demo" ? (
+      {path === "/auth-demo" ? (
+        <AuthDemoPage />
+      ) : path === "/cart-demo" ? (
         <CartDemoPage />
       ) : path === "/ui-demo" ? (
         <UIDemoPage />
