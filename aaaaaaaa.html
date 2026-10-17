@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bookmark Hub - ブックマーク管理</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Inter Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    /* smooth transitions */
+    .bookmark-card {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .bookmark-card:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 min-h-screen font-sans transition-colors duration-300">
+
+  <div class="max-w-5xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
+    
+    <!-- Header -->
+    <header class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-200 dark:border-slate-800">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
+          <i class="fa-solid font-bold text-xl fa-bookmark"></i>
+        </div>
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-indigo-600 to-violet-500 bg-clip-text text-transparent">
+            Bookmark Hub
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">お気に入りのWebサイトをひとまとめに管理</p>
+        </div>
+      </div>
+
+      <!-- Quick Actions / Theme Toggle -->
+      <div class="flex items-center gap-3">
+        <button id="themeToggleBtn" aria-label="テーマ切替" class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition">
+          <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
+        </button>
+        <button id="resetDefaultsBtn" class="px-3 py-2 rounded-xl text-xs font-medium bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition">
+          初期表示に戻す
+        </button>
+      </div>
+    </header>
+
+    <!-- Notification Alert -->
+    <div id="toast" class="hidden fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl flex items-center gap-3 transition-opacity duration-300">
+      <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400"></i>
+      <span id="toastMsg" class="text-sm font-medium"></span>
+    </div>
+
+    <!-- Registration Form -->
+    <section class="bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-sm border border-slate-200/80 dark:border-slate-700/80 mb-8 transition-colors">
+      <h2 class="text-lg font-semibold mb-4 flex items-center gap-2 text-slate-900 dark:text-white">
+        <i class="fa-solid fa-plus-circle text-indigo-500"></i> 新しいブックマークを追加
+      </h2>
+      <form id="bookmarkForm" class="grid grid-cols-1 sm:grid-cols-12 gap-4">
+        <!-- Name Input -->
+        <div class="sm:col-span-5">
+          <label for="siteName" class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">サイト名</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-tag text-xs"></i>
+            </span>
+            <input 
+              type="text" 
+              id="siteName" 
+              placeholder="例: Google, Yahoo! JAPAN" 
+              required
+              class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white"
+            />
+          </div>
+        </div>
+
+        <!-- URL Input -->
+        <div class="sm:col-span-5">
+          <label for="siteUrl" class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">URL</label>
+          <div class="relative">
+            <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+              <i class="fa-solid fa-link text-xs"></i>
+            </span>
+            <input 
+              type="text" 
+              id="siteUrl" 
+              placeholder="例: google.com または https://..." 
+              required
+              class="w-full pl-9 pr-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white"
+            />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="sm:col-span-2 flex items-end">
+          <button 
+            type="submit" 
+            class="w-full py-2.5 px-4 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white font-medium rounded-xl text-sm transition shadow-md shadow-indigo-500/20 flex items-center justify-center gap-2"
+          >
+            <i class="fa-solid fa-plus"></i> 追加
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Search & Filter Bar -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-4">
+      <div class="flex items-center gap-2">
+        <h3 class="text-base font-semibold text-slate-700 dark:text-slate-300">登録済みリンク</h3>
+        <span id="bookmarkCount" class="text-xs bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold px-2.5 py-0.5 rounded-full">0</span>
+      </div>
+      <!-- Search Input -->
+      <div class="w-full sm:w-64 relative">
+        <span class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400">
+          <i class="fa-solid fa-magnifying-glass text-xs"></i>
+        </span>
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="検索..." 
+          class="w-full pl-9 pr-3 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:text-white"
+        />
+      </div>
+    </div>
+
+    <!-- Flexbox Container for Cards -->
+    <div id="bookmarkGrid" class="flex flex-wrap gap-4 items-stretch">
+      <!-- Cards will be populated dynamically by JavaScript -->
+    </div>
+
+    <!-- Empty State Container -->
+    <div id="emptyState" class="hidden text-center py-12 px-4 bg-white dark:bg-slate-800 rounded-2xl border border-dashed border-slate-300 dark:border-slate-700">
+      <div class="w-16 h-16 mx-auto mb-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-slate-400">
+        <i class="fa-regular fa-folder-open text-2xl"></i>
+      </div>
+      <p class="text-slate-600 dark:text-slate-300 font-medium">ブックマークが見つかりません</p>
+      <p class="text-slate-400 dark:text-slate-500 text-xs mt-1">上のフォームから登録するか、検索ワードを確認してください。</p>
+    </div>
+
+  </div>
+
+  <script>
+    // Default initial bookmarks
+    const DEFAULT_BOOKMARKS = [
+      { id: '1', name: 'Google', url: 'https://www.google.com' },
+      { id: '2', name: 'YouTube', url: 'https://www.youtube.com' },
+      { id: '3', name: 'GitHub', url: 'https://github.com' },
+      { id: '4', name: 'Yahoo! JAPAN', url: 'https://www.yahoo.co.jp' }
+    ];
+
+    // State
+    let bookmarks = [];
+
+    // DOM Elements
+    const bookmarkForm = document.getElementById('bookmarkForm');
+    const siteNameInput = document.getElementById('siteName');
+    const siteUrlInput = document.getElementById('siteUrl');
+    const bookmarkGrid = document.getElementById('bookmarkGrid');
+    const emptyState = document.getElementById('emptyState');
+    const bookmarkCount = document.getElementById('bookmarkCount');
+    const searchInput = document.getElementById('searchInput');
+    const resetDefaultsBtn = document.getElementById('resetDefaultsBtn');
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeIcon = document.getElementById('themeIcon');
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      loadBookmarks();
+      setupTheme();
+    });
+
+    // Theme Logic
+    function setupTheme() {
+      const isDark = localStorage.getItem('theme') === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+        themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.className = 'fa-solid fa-moon text-lg';
+      }
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        themeIcon.className = 'fa-solid fa-moon text-lg';
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        themeIcon.className = 'fa-solid fa-sun text-lg text-amber-400';
+      }
+    });
+
+    // Toast Notification
+    function showToast(message) {
+      toastMsg.textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 2500);
+    }
+
+    // Load bookmarks from LocalStorage or Defaults
+    function loadBookmarks() {
+      const saved = localStorage.getItem('user_bookmarks');
+      if (saved) {
+        try {
+          bookmarks = JSON.parse(saved);
+        } catch (e) {
+          bookmarks = [...DEFAULT_BOOKMARKS];
+        }
+      } else {
+        bookmarks = [...DEFAULT_BOOKMARKS];
+        saveBookmarks();
+      }
+      renderBookmarks();
+    }
+
+    // Save bookmarks to LocalStorage
+    function saveBookmarks() {
+      localStorage.setItem('user_bookmarks', JSON.stringify(bookmarks));
+    }
+
+    // URL Helper: Auto-prepend protocol if missing
+    function formatUrl(url) {
+      let trimmed = url.trim();
+      if (!/^https?:\/\//i.test(trimmed)) {
+        trimmed = 'https://' + trimmed;
+      }
+      return trimmed;
+    }
+
+    // Favicon Helper
+    function getFaviconUrl(url) {
+      try {
+        const domain = new URL(url).hostname;
+        return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+      } catch {
+        return '';
+      }
+    }
+
+    // Add Bookmark Event
+    bookmarkForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = siteNameInput.value.trim();
+      let rawUrl = siteUrlInput.value.trim();
+
+      if (!name || !rawUrl) return;
+
+      const formattedUrl = formatUrl(rawUrl);
+
+      const newBookmark = {
+        id: Date.now().toString(),
+        name: name,
+        url: formattedUrl
+      };
+
+      bookmarks.unshift(newBookmark);
+      saveBookmarks();
+      renderBookmarks();
+
+      // Reset form
+      siteNameInput.value = '';
+      siteUrlInput.value = '';
+      siteNameInput.focus();
+
+      showToast('ブックマークを追加しました');
+    });
+
+    // Delete Bookmark
+    function deleteBookmark(id, e) {
+      e.stopPropagation(); // Stop navigation click
+      bookmarks = bookmarks.filter(b => b.id !== id);
+      saveBookmarks();
+      renderBookmarks();
+      showToast('ブックマークを削除しました');
+    }
+
+    // Reset Defaults
+    resetDefaultsBtn.addEventListener('click', () => {
+      bookmarks = [...DEFAULT_BOOKMARKS];
+      saveBookmarks();
+      renderBookmarks();
+      showToast('初期設定に戻しました');
+    });
+
+    // Search Filter Event
+    searchInput.addEventListener('input', () => {
+      renderBookmarks();
+    });
+
+    // Render Bookmarks Grid
+    function renderBookmarks() {
+      const filterTerm = searchInput.value.toLowerCase().trim();
+      const filtered = bookmarks.filter(b => 
+        b.name.toLowerCase().includes(filterTerm) || 
+        b.url.toLowerCase().includes(filterTerm)
+      );
+
+      bookmarkGrid.innerHTML = '';
+      bookmarkCount.textContent = filtered.length;
+
+      if (filtered.length === 0) {
+        emptyState.classList.remove('hidden');
+        return;
+      } else {
+        emptyState.classList.add('hidden');
+      }
+
+      filtered.forEach(item => {
+        // Flexbox item with auto width / wrapping capabilities
+        const card = document.createElement('div');
+        card.className = 'bookmark-card group relative flex-1 min-w-[200px] max-w-full sm:max-w-[280px] bg-white dark:bg-slate-800 rounded-2xl p-4 shadow-sm hover:shadow-md border border-slate-200/80 dark:border-slate-700/80 cursor-pointer flex items-center justify-between gap-3 select-none';
+        
+        // Click to navigate in new tab
+        card.addEventListener('click', () => {
+          window.open(item.url, '_blank', 'noopener,noreferrer');
+        });
+
+        const faviconSrc = getFaviconUrl(item.url);
+
+        card.innerHTML = `
+          <div class="flex items-center gap-3 overflow-hidden">
+            <!-- Icon / Favicon -->
+            <div class="w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-700/60 flex-shrink-0 flex items-center justify-center overflow-hidden border border-slate-200/50 dark:border-slate-600/50">
+              <img 
+                src="${faviconSrc}" 
+                alt="${item.name}" 
+                class="w-5 h-5 object-contain"
+                onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\"fa-solid fa-globe text-slate-400\"></i>';"
+              />
+            </div>
+            <!-- Title & URL Domain -->
+            <div class="overflow-hidden">
+              <h4 class="font-semibold text-sm text-slate-800 dark:text-slate-100 truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                ${escapeHtml(item.name)}
+              </h4>
+              <p class="text-xs text-slate-400 dark:text-slate-500 truncate mt-0.5">
+                ${escapeHtml(getDomain(item.url))}
+              </p>
+            </div>
+          </div>
+
+          <!-- Delete Action -->
+          <button 
+            type="button" 
+            aria-label="削除" 
+            class="delete-btn opacity-0 group-hover:opacity-100 focus:opacity-100 p-2 text-slate-400 hover:text-rose-500 rounded-lg hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-all flex-shrink-0"
+          >
+            <i class="fa-solid fa-trash-can text-xs pointer-events-none"></i>
+          </button>
+        `;
+
+        // Attach event listener to delete button specifically
+        const deleteBtn = card.querySelector('.delete-btn');
+        deleteBtn.addEventListener('click', (e) => deleteBookmark(item.id, e));
+
+        bookmarkGrid.appendChild(card);
+      });
+    }
+
+    // Domain Extractor Helper
+    function getDomain(url) {
+      try {
+        return new URL(url).hostname.replace('www.', '');
+      } catch {
+        return url;
+      }
+    }
+
+    // HTML Sanitization
+    function escapeHtml(str) {
+      return str.replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+    }
+  </script>
+</body>
+</html>
